@@ -10,4 +10,6 @@ class User < ApplicationRecord
             format: { with: VALID_EMAIL_REGEX }
 
   has_many :albums, dependent: :destroy
+
+  has_secure_password
 end
