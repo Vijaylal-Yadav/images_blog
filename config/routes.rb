@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   delete 'logout', to: "sessions#destroy"
   resources :albums
   resources :pictures, except: [:show]
+  root "homepages#home"
 end

@@ -11,11 +11,11 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(picture_params)
     @album = Album.find(@picture.album_id)
-    if @album.pictures.count < 3 && @picture.save
+    if @album.pictures.count < 25 && @picture.save
       flash[:notice] = "Picture Saved succesfully"
       redirect_to @album
     else
-      flash[:notice] = "More than 3 Pictures cannot be created" if @album.pictures.count >= 3
+      flash[:notice] = "More than 25 Pictures cannot be created, Please create new album" if @album.pictures.count >= 25
       render 'new'
     end
   end

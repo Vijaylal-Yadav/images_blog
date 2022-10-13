@@ -2,6 +2,9 @@
   <% @pictures.each do |picture| %>
     <tr>
     <tr><h4><%= picture.tag_line%></h4></tr>
+   <% if !logged_in? %>
+   <tr>Uploaded by: <%= picture.album.user.username%></tr>
+     <% end %>
     <td><%= image_tag picture.avatar.url %></td>
     <br>
       <% if logged_in? && (current_user.id == @album.user_id) %>

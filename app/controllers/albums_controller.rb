@@ -1,6 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, except: [:show]
+  before_action :require_user, except: [:show, :index]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def new
@@ -39,6 +39,10 @@ class AlbumsController < ApplicationController
   def destroy
     @album.destroy
     redirect_to current_user
+  end
+
+  def index
+    @albums = Album.all
   end
 
   private
