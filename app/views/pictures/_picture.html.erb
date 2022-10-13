@@ -2,12 +2,12 @@
   <% @pictures.each do |picture| %>
     <tr>
     <tr><h4><%= picture.tag_line%></h4></tr>
-   <% if !logged_in? %>
+   <% if request[:action] == "home" %>
    <tr>Uploaded by: <%= picture.album.user.username%></tr>
      <% end %>
     <td><%= image_tag picture.avatar.url %></td>
     <br>
-      <% if logged_in? && (current_user.id == @album.user_id) %>
+      <% if logged_in? && @album.present? && (current_user.id == @album.user_id) %>
         <tr> <%= link_to 'Edit ', edit_picture_path(picture)%></tr>
         <tr><%= link_to ' Delete ', picture_path(picture), method: :delete, data: {confirm: "Are you sure want to delete this?"} %></tr>
       <% end %>
