@@ -1,7 +1,7 @@
 class HomepagesController < ApplicationController
 
   def home
-    @pictures = Picture.last(25)
+    @pictures = []
   end
 
 end
