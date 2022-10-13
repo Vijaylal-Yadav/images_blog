@@ -16,8 +16,8 @@
     <tr>
       <td><%= link_to  album.name, album_path(album)%></td>
       <% if logged_in? && (current_user.id == album.user_id) %>
-        <td> <%= 'Edit '%></td>
-        <td><%= 'Delete' %></td>
+        <td> <%= link_to 'Edit', edit_album_path(album)%></td>
+        <td><%= link_to 'Delete', album_path(album), method: :delete, data: {confirm: "Are you sure want to delete this?"} %></td>
       <% end %>
     </tr>
   <% end %>

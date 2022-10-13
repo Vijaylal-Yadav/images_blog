@@ -1,4 +1,10 @@
 <h1> <%= @user.username %>'s details </h1>
 <p><strong> Name: </strong><%= @user.username %></p>
 <p><strong>Email:</strong><%= @user.email %> </p>
+<% if logged_in? && (current_user == @user)%>
+  <%= link_to 'Edit Profile', edit_user_path(current_user) %> |
+  <%= link_to 'logout', logout_path, method: :delete %>
+<% else %>
+  <%= link_to 'Login', login_path() %>
+<% end %>
 <%= render 'albums/album' %>
