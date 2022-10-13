@@ -5,7 +5,7 @@
    <% if request[:action] == "home" %>
    <tr>Uploaded by: <%= picture.album.user.username%></tr>
      <% end %>
-    <td><%= image_tag picture.avatar.url %></td>
+    <td><%= image_tag picture.avatar.url%></td>
     <br>
       <% if logged_in? && @album.present? && (current_user.id == @album.user_id) %>
         <tr> <%= link_to 'Edit ', edit_picture_path(picture)%></tr>
