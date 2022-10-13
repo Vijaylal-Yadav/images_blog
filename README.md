@@ -1,24 +1,27 @@
-# README
+# Images Album
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Depndencies.
 
 Things you may want to cover:
 
-* Ruby version
+- Ruby 2.6.6 and Bundler
+- Postgresql >= 9.6
+- Node and Yarn
+- ImageMagick
+- paperclip 6.0.0
+- bootsnap '>= 1.4.4'
 
-* System dependencies
+## Setup
 
-* Configuration
+- Run `bundle install`
+- Run `yarn install`
+- Install Webpacker
+- yarn add bootstrap@4.4.1
+- yarn install popper.js --save
+- rails webpacker:compile -- should not thro error after compiling
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+ App is deployed on heroku and currently aws S3 bucket is not added for images storing.
 
-* ...
+app url: https://imagesblog.herokuapp.com/
