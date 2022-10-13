@@ -1,4 +1,11 @@
 <h1> Showing album details </h1>
 <p><strong> Name: </strong><%= @album.name %></p>
 
-<%= link_to 'Return to Albums Listing',current_user %>
+<% if logged_in? && (current_user == @album.user)%>
+  <%= link_to 'Return to Albums Listing',current_user %> |
+  <%= link_to 'Add Pictures',new_picture_path(:album => @album) %>
+<% else %>
+  <%= link_to 'Login', login_path() %>
+<% end %>
+
+<%= render 'pictures/picture' %>

@@ -1,0 +1,21 @@
+<h1>Edit Picture </h1>
+<% if @picture.errors.any? %>
+  <h2>Below are the errors preventing albums to get saved</h2>
+  <ul>
+    <% @picture.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @picture, local: true ) do |f| %>
+  <%= f.hidden_field :album_id %>
+  <p>
+    <%= f.label :tag_line %><br/>
+    <%= f.text_field :tag_line%>
+  </p>
+
+  <p>
+    <%= f.submit %><br/>
+  </p>
+<% end %>
