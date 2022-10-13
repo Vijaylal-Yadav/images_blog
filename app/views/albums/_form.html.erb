@@ -1,0 +1,20 @@
+<% if @album.errors.any? %>
+  <h2>Below are the errors preventing albums to get saved</h2>
+  <ul>
+    <% @album.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @album, local: true ) do |f| %>
+
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name%>
+  </p>
+
+  <p>
+    <%= f.submit %><br/>
+  </p>
+<% end %>

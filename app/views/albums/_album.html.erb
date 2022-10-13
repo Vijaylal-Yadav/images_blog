@@ -1,0 +1,32 @@
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+<table>
+  <thead>
+  <th>ALbum Name</th>
+  <% if logged_in? %>
+  <th colspan="3"> Action </th>
+  <% end %>
+  </thead>
+
+  <tbody>
+  <% @albums.each do |album| %>
+    <tr>
+      <td><%= link_to  album.name, album_path(album)%></td>
+      <% if logged_in? && (current_user.id == album.user_id) %>
+        <td> <%= 'Edit '%></td>
+        <td><%= 'Delete' %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<body>
+<br/>
+<p><%= link_to 'Create New Album', new_album_path()%></p>
+
+</body>
