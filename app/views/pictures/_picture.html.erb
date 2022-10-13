@@ -1,13 +1,10 @@
-<h2> Picture details </h2>
-
-<p><strong> Title: </strong><%= @pictures.count %></p>
-
-  <tbody>
+ <tbody>
   <% @pictures.each do |picture| %>
     <tr>
     <tr><h4><%= picture.tag_line%></h4></tr>
+    <td><%= image_tag picture.avatar.url %></td>
     <br>
-      <% if logged_in? && (current_user.id == picture.album.user_id) %>
+      <% if logged_in? && (current_user.id == @album.user_id) %>
         <tr> <%= link_to 'Edit ', edit_picture_path(picture)%></tr>
         <tr><%= link_to ' Delete ', picture_path(picture), method: :delete, data: {confirm: "Are you sure want to delete this?"} %></tr>
       <% end %>

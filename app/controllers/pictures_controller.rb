@@ -11,16 +11,22 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(picture_params)
     @album = Album.find(@picture.album_id)
-    if @picture.save
+    if @album.pictures.count < 3 && @picture.save
       flash[:notice] = "Picture Saved succesfully"
       redirect_to @album
     else
+      flash[:notice] = "More than 3 Pictures cannot be created" if @album.pictures.count >= 3
       render 'new'
     end
   end
 
   def edit
 
+  end
+
+  def destroy
+    @picture.destroy
+    redirect_to @album
   end
 
   def update
@@ -40,7 +46,7 @@ class PicturesController < ApplicationController
   end
 
   def picture_params
-    params.require(:picture).permit(:tag_line, :album_id)
+    params.require(:picture).permit(:tag_line, :album_id,:avatar)
   end
 
   def require_same_user
